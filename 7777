@@ -1,0 +1,27 @@
+def send_email(message, recipient, sender="university.help@gmail.com"):
+    """
+    Функция отправки email с проверкой корректности адресов и отправителя.
+    """
+    if "@" not in recipient or not recipient.endswith((".com", ".ru", ".net")):
+        print(f"Невозможно отправить письмо с адреса {sender} на адрес {recipient}")
+        return
+
+    if "@" not in sender or not sender.endswith((".com", ".ru", ".net")):
+        print(f"Невозможно отправить письмо с адреса {sender} на адрес {recipient}")
+        return
+
+    if sender == recipient:
+        print("Нельзя отправить письмо самому себе!")
+        return
+
+    if sender == "university.help@gmail.com":
+        print(f"Письмо успешно отправлено с адреса {sender} на адрес {recipient}.")
+        return
+
+    print(f"НЕСТАНДАРТНЫЙ ОТПРАВИТЕЛЬ! Письмо отправлено с адреса {sender} на адрес {recipient}.")
+
+send_email("Привет!", "user@example.com")
+send_email("Важное сообщение", "test@gmail.com", sender="test@gmail.com")
+send_email("Запрос информации", "user@example.com", sender="support@company.ru")
+send_email("Hello!", "user@example.net", sender="user@example.net")
+send_email("Сообщение", "invalid_email", sender="university.help@gmail.com")
